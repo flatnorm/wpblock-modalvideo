@@ -1,11 +1,11 @@
-import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { RichText, useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
-    const { style, content } = attributes;
+    const { style, content, title } = attributes;
 
     return (
         <div {...useBlockProps.save({ className: `alert alert-${style}` })}>
-            <RichText.Content tagName={'p'} value={content} />
+            <InnerBlocks.Content />
         </div>
     );
 }

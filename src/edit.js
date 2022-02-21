@@ -3,15 +3,19 @@ import { PanelBody, SelectControl } from '@wordpress/components';
 import {
     InspectorControls,
     RichText,
+	URLInput,
+	InnerBlocks,
     useBlockProps,
 } from '@wordpress/block-editor';
 
 export default function AlertEdit({ attributes, setAttributes }) {
-    const { style, content } = attributes;
+    const { style, content, title } = attributes;
 
     const blockProps = useBlockProps({
         className: `alert alert-${style}`,
     });
+
+	const ALLOWED_BLOCKS = [ 'core/paragraph' ];
 
     return (
         <>
@@ -39,11 +43,7 @@ export default function AlertEdit({ attributes, setAttributes }) {
                 </PanelBody>
             </InspectorControls>
             <div {...blockProps}>
-                <RichText
-                    tagName="p"
-                    onChange={(value) => setAttributes({ content: value })}
-                    value={content}
-                />
+				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS }/>
             </div>
         </>
     );
