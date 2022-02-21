@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/popup-videos",
+	"version": "0.1.0",
+	"title": "Popup Videos",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "フロント画面にYoutubeの動画をポップアップで表示するためのオリジナルブロック",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "popup-videos",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"style": {
+            "type": "string",
+            "default": "info"
+        },
+        "content": {
+            "type": "string",
+            "source": "html",
+            "selector": "p"
+        }
+	}
+}
