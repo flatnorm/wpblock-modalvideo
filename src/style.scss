@@ -6,12 +6,20 @@
  */
 
 .wp-block-create-block-popup-videos {
-	background-color: #21759b;
-	color: #fff;
+	background-color: #eee;
+	color: #333;
 	padding: 2px;
 	p{
 		background-color: #f1f1f1;
 		color: #333;
+	}
+	.input-box{
+		float: left;
+		width: 50%;
+	}
+	.preview-box{
+		float: right;
+		width: 50%;
 	}
 }
 

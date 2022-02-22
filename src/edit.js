@@ -63,6 +63,26 @@ export default function AlertEdit({ attributes, setAttributes }) {
 		);
 	};
 
+    const renderTitleField = () => {
+        const textFieldClasses = classnames(
+			'wp-block-search__input',
+			isButtonPositionInside ? undefined : borderProps.className
+		);
+        const textFieldStyles = isButtonPositionInside
+			? { borderRadius }
+			: borderProps.style;
+        return (
+            <input 
+                className={ textFieldClasses }
+                style={ textFieldStyles }
+                value={ title }
+                onChange={ ( event ) =>
+					setAttributes( { title: event.target.value } )
+				}
+            />
+        );
+    }
+
     return (
         <>
             <InspectorControls>
@@ -72,8 +92,17 @@ export default function AlertEdit({ attributes, setAttributes }) {
             <div {...blockProps}>
                 <ResizableBox>
                     <>
-						{ renderTextField() }
-                        <img src={'https://img.youtube.com/vi/' + placeholder + '/mqdefault.jpg'}/>
+                        <div className="input-box">
+                            動画のURL<br />
+                            { renderTextField() }
+                            <br />動画のタイトル<br />
+                            { renderTitleField() }
+                        </div>
+                        <div className="preview-box">
+                            サムネプレビュー
+                            <img src={'https://img.youtube.com/vi/' + placeholder + '/mqdefault.jpg'}/>
+                        </div>
+                        <div className="clear"></div>
 					</>
                 </ResizableBox>
             </div>
