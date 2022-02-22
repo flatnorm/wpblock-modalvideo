@@ -16,5 +16,8 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^21.0.2"
+	},
+	"dependencies": {
+		"classnames": "^2.3.1"
 	}
 }

@@ -11,9 +11,39 @@
 	padding: 2px;
 	p{
 		background-color: #f1f1f1;
+		color: #333;
 	}
 }
 
-.alert{
-	background-color: #f00;
+.video-carousel {
+	width: 100%;
+	.slick-slider{
+		padding: 0 40px;
+	}
+	.slick-list{
+		width: 100%;
+	}
+	.carousel-arrow {
+		background-color: #f1f1f1;
+		display: block;
+		width: 23px;
+		height: 70px;
+		position: absolute;
+		transform: translate(0,-50%);
+		top: 50%;
+		cursor: pointer;
+		&.prev {
+			background: url(../js/carousel_arrowprev.png) no-repeat;
+			left: 5px;
+		}
+		&.next {
+			background: url(../js/carousel_arrownext.png) no-repeat;
+			right: 5px;
+			margin-top: 0;
+		}
+	}
+	.single-video{
+		margin: 5px;
+		cursor: pointer;
+	}
 }

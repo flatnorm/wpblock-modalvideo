@@ -1,49 +1,81 @@
+import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { 
+    PanelBody, 
+    SelectControl,
+    ResizableBox, } from '@wordpress/components';
 import {
     InspectorControls,
     RichText,
 	URLInput,
 	InnerBlocks,
     useBlockProps,
+    __experimentalUseBorderProps as useBorderProps,
 } from '@wordpress/block-editor';
 
 export default function AlertEdit({ attributes, setAttributes }) {
-    const { style, content, title } = attributes;
+    const { 
+        style, 
+        content, 
+        title,
+        placeholder,
+        buttonPosition,
+     } = attributes;
 
     const blockProps = useBlockProps({
         className: `alert alert-${style}`,
     });
 
-	const ALLOWED_BLOCKS = [ 'core/paragraph' ];
+	const ALLOWED_BLOCKS = [ 
+        [ 'core/paragraph', { placeholder: 'Youtube URL' } ],
+        [ 'core/search', { placeholder: 'SEOタイトル' } ],
+    ];
+
+    const isButtonPositionInside = 'button-inside' === buttonPosition;
+    const borderProps = useBorderProps( attributes );
+
+    const renderTextField = () => {
+		// If the input is inside the wrapper, the wrapper gets the border color styles/classes, not the input control.
+		const textFieldClasses = classnames(
+			'wp-block-search__input',
+			isButtonPositionInside ? undefined : borderProps.className
+		);
+		const textFieldStyles = isButtonPositionInside
+			? { borderRadius }
+			: borderProps.style;
+
+		return (
+			<input
+				className={ textFieldClasses }
+				style={ textFieldStyles }
+				aria-label={ __( 'Optional placeholder text' ) }
+				// We hide the placeholder field's placeholder when there is a value. This
+				// stops screen readers from reading the placeholder field's placeholder
+				// which is confusing.
+				placeholder={
+					placeholder ? undefined : '動画のURL'
+				}
+				value={ placeholder }
+				onChange={ ( event ) =>
+					setAttributes( { placeholder: event.target.value } )
+				}
+			/>
+		);
+	};
 
     return (
         <>
             <InspectorControls>
                 <PanelBody title={__('Style Settings', 'alert-block')}>
-                    <SelectControl
-                        value={style}
-                        onChange={(value) => setAttributes({ style: value })}
-                        options={[
-                            {
-                                label: __('Success', 'alert-block'),
-                                value: 'success',
-                            },
-                            { label: __('Info', 'alert-block'), value: 'info' },
-                            {
-                                label: __('Warning', 'alert-block'),
-                                value: 'warning',
-                            },
-                            {
-                                label: __('Danger', 'alert-block'),
-                                value: 'danger',
-                            },
-                        ]}
-                    />
                 </PanelBody>
             </InspectorControls>
             <div {...blockProps}>
-				<InnerBlocks allowedBlocks={ ALLOWED_BLOCKS }/>
+                <ResizableBox>
+                    <>
+						{ renderTextField() }
+                        <img src={'https://img.youtube.com/vi/' + placeholder + '/mqdefault.jpg'}/>
+					</>
+                </ResizableBox>
             </div>
         </>
     );

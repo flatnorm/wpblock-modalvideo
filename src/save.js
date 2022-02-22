@@ -1,11 +1,15 @@
 import { RichText, useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
-    const { style, content, title } = attributes;
+    const { style, content, title, placeholder } = attributes;
+
+    // const trimUrl = placeholder + 'untrimmed trime'
 
     return (
-        <div {...useBlockProps.save({ className: `alert alert-${style}` })}>
-            <InnerBlocks.Content />
+        <div class={'single-video'}>
+            <span data-video-id={ placeholder } class={'js-modal-video'}>
+                <img src={'https://img.youtube.com/vi/' + placeholder + '/mqdefault.jpg'}/>
+            </span>
         </div>
     );
 }
