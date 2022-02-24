@@ -9,6 +9,7 @@ export default function save({ attributes }) {
         <div class={'single-video'}>
             <span data-video-id={ placeholder } class={'js-modal-video'}>
                 <img src={'https://img.youtube.com/vi/' + placeholder + '/mqdefault.jpg'} alt={title}/>
+                <span class={'modal-video-title'}>{ title }</span>
             </span>
         </div>
     );

@@ -53,5 +53,10 @@
 	.single-video{
 		margin: 5px;
 		cursor: pointer;
+		.modal-video-title{
+			font-size: .8rem;
+			text-align: left;
+			display: inline-block;
+		}
 	}
 }
