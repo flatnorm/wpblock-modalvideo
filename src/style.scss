@@ -37,8 +37,7 @@
 		width: 23px;
 		height: 70px;
 		position: absolute;
-		transform: translate(0,-50%);
-		top: 50%;
+		top: 50px;
 		cursor: pointer;
 		&.prev {
 			background: url(../js/carousel_arrowprev.png) no-repeat;
@@ -53,10 +52,45 @@
 	.single-video{
 		margin: 5px;
 		cursor: pointer;
+		position: relative;
 		.modal-video-title{
 			font-size: .8rem;
 			text-align: left;
 			display: inline-block;
+			margin-top: 10px;
 		}
+		.play-button{
+			display: block;
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			top: 55px;
+			left: 50%;
+			transform: translate(-50%,0);
+			z-index: 10;
+			background: url(../img/play_btn.png) no-repeat center / contain;
+			filter: grayscale(100%);
+			transition: filter ease .3s;
+		}
+		&:hover{
+			.play-button{
+				filter: grayscale(0%);
+			}
+		}
+	}
+}
+
+.modal-video-inner{
+	flex-wrap: wrap;
+	.modal-video-movie-wrap{
+		margin-top: auto;
+	}
+	.modal-video-text{
+		display: inline-block;
+		text-align: center;
+		color: #fff;
+		font-size: 0.9rem;
+		margin-bottom: auto;
+		width: 100%;
 	}
 }
