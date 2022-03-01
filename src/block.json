@@ -19,49 +19,14 @@
             "type": "string",
             "default": "info"
         },
-        "content": {
-            "type": "string",
-            "source": "html",
-            "selector": "p"
-        },
 		"title": {
             "type": "string",
-            "source": "html",
-            "selector": "p"
+			"default": ""
         },
-		"url": {
-			"type": "array"
-		},
-		"label": {
-			"type": "string",
-			"__experimentalRole": "content"
-		},
-		"showLabel": {
-			"type": "boolean",
-			"default": true
-		},
 		"placeholder": {
 			"type": "string",
 			"default": "",
 			"__experimentalRole": "content"
-		},
-		"width": {
-			"type": "number"
-		},
-		"widthUnit": {
-			"type": "string"
-		},
-		"buttonText": {
-			"type": "string",
-			"__experimentalRole": "content"
-		},
-		"buttonPosition": {
-			"type": "string",
-			"default": "button-outside"
-		},
-		"buttonUseIcon": {
-			"type": "boolean",
-			"default": false
 		}
 	}
 }

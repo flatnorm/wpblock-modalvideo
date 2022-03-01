@@ -1,31 +1,5 @@
 (function($){
     console.log('modal....')
-    if ($(".js-modal-video").length) { //クラス名js-modal-videoがあれば以下を実行
-        $(".js-modal-video").modalVideo({
-          channel: "youtube",
-          youtube: {
-            rel: 0, //関連動画の指定
-            autoplay: 0, //自動再生の指定
-            controls: 0, //コントロールさせるかどうかの指定
-          }
-        });
-
-        var singleVideo = $('.js-modal-video');
-        singleVideo.each((index, element) => {
-          $(element).append('<span class="play-button"></span>')
-        });
-        singleVideo.click(function(e){
-          console.log('clicked...')
-          var clickedVideoText = e.currentTarget.innerText
-          console.dir(clickedVideoText)
-          var videoTarget = $('.modal-video-inner')[0]
-          
-          console.dir(videoTarget)
-
-          // var currentModal = $('#modal-video-inner-' + videoId);
-          $(videoTarget).append('<span class="modal-video-text">' + clickedVideoText + '</span>');
-        });
-    }
 
     var modalVideoMovieWrap = $('.modal-video-movie-wrap');
     console.dir(modalVideoMovieWrap)
@@ -47,4 +21,29 @@
             },
         ]
     });
+
+    if ($(".js-modal-video").length) { //クラス名js-modal-videoがあれば以下を実行
+      $(".js-modal-video").modalVideo({
+        channel: "youtube",
+        youtube: {
+          rel: 0, //関連動画の指定
+          autoplay: 0, //自動再生の指定
+          controls: 0, //コントロールさせるかどうかの指定
+        }
+      });
+
+      var singleVideo = $('.js-modal-video');
+      singleVideo.each((index, element) => {
+        $(element).append('<span class="play-button"></span>')
+      });
+      singleVideo.click(function(e){
+        console.log('clicked...')
+        var clickedVideoText = e.currentTarget.innerText
+        console.dir(clickedVideoText)
+        var videoTarget = $('.modal-video-inner')[0]
+        console.dir(videoTarget)
+        $(videoTarget).append('<span class="modal-video-text">' + clickedVideoText + '</span>');
+      });
+    }
+
 })(jQuery);

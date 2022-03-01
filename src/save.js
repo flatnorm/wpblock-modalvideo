@@ -1,9 +1,6 @@
-import { RichText, useBlockProps, InnerBlocks } from '@wordpress/block-editor';
-
 export default function save({ attributes }) {
-    const { style, content, title, placeholder } = attributes;
 
-    // const trimUrl = placeholder + 'untrimmed trime'
+    const { title, placeholder } = attributes;
 
     return (
         <div class={'single-video'}>

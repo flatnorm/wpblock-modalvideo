@@ -2,13 +2,9 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { 
     PanelBody, 
-    SelectControl,
     ResizableBox, } from '@wordpress/components';
 import {
     InspectorControls,
-    RichText,
-	URLInput,
-	InnerBlocks,
     useBlockProps,
     __experimentalUseBorderProps as useBorderProps,
 } from '@wordpress/block-editor';
@@ -16,7 +12,6 @@ import {
 export default function AlertEdit({ attributes, setAttributes }) {
     const { 
         style, 
-        content, 
         title,
         placeholder,
         buttonPosition,
@@ -25,11 +20,6 @@ export default function AlertEdit({ attributes, setAttributes }) {
     const blockProps = useBlockProps({
         className: `alert alert-${style}`,
     });
-
-	const ALLOWED_BLOCKS = [ 
-        [ 'core/paragraph', { placeholder: 'Youtube URL' } ],
-        [ 'core/search', { placeholder: 'SEOタイトル' } ],
-    ];
 
     const isButtonPositionInside = 'button-inside' === buttonPosition;
     const borderProps = useBorderProps( attributes );
