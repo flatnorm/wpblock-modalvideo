@@ -9,7 +9,7 @@
         slidesToScroll: 1,
         prevArrow: '<span class="carousel-arrow prev"></span>',
         nextArrow: '<span class="carousel-arrow next"></span>',
-        centerMode: true,
+        centerMode: false,
         responsive: [
             {
               breakpoint: 767,
